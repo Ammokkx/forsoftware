@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SkiingMinigame.FakeBL.Objects.Sprites;
+using SkiingMinigame.Services;
 using SkiingMinigame.Services.InputService;
 using System;
 using System.Collections.Generic;
@@ -13,33 +14,17 @@ namespace SkiingMinigame.States
         : State(context)
     {
         private PlayingStateInputService InputService { get; } = new PlayingStateInputService();
-
+        private CollisionDetector collisionDetector = new CollisionDetector(context);
         public override void Update(GameTime gameTime)
         {
             foreach (Player1Sprite playersprite in Context.Player)
             {
-                //mostly just copy paste from the enemy variant but without all the... well, enemies.
                 playersprite.Update(gameTime, Game1.PLAYER_STEP, InputService);
 
-
-              
-                if (playersprite.Position.X < Game1.PlayGroundBoundsLeft)
-                {
-                    playersprite.ChangeXPosition(Game1.BoopRightOrDown);
-                }
-                if (playersprite.Position.Y < Game1.PlayGroundBoundsUp)
-                {
-                    playersprite.ChangeYPosition(Game1.BoopRightOrDown);
-                }
-                if (playersprite.Position.X > Game1.PlayGroundBoundsRight)
-                {
-                    playersprite.ChangeXPosition(Game1.BoopLeftOrUp);
-                }
-                if (playersprite.Position.Y > Game1.PlayGroundBoundsDown)
-                {
-                    playersprite.ChangeYPosition(Game1.BoopLeftOrUp);
-                }
+                collisionDetector.CheckCollisionWithWall(playersprite);
+                
             }
+
             if (InputService.ShouldPause())
                 Context.ChangeState(new PausedState(Context, this));
 
