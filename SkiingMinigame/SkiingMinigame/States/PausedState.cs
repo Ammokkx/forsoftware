@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SkiingMinigame.Facades;
-using SkiingMinigameBL.Extensions;
+using SkiingMinigame.FakeBL.Extensions;
+using SkiingMinigame.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace SkiingMinigame.States
             // Now we put the paused text on top
             Context._spriteBatch.DrawStringInCenter(
                 Context._graphics,
-                Context._font,
+                ContentService.Instance.GetSpriteFont(ContentService.GameFont),
                 "Paused. Press P to resume.");
         }
     }

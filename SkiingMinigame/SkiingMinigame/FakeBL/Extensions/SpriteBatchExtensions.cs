@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkiingMinigameBL.Extensions
+namespace SkiingMinigame.FakeBL.Extensions
 {
     public static class SpriteBatchExtensions
     {
         // not sure if i'm gonna use any of this right now but i'm not getting rid of it because it COULD be useful
+
+        // update: i think i literally don't use any of this but it doesn't hurt to keep it tbh
 
         public static void Draw(this SpriteBatch spriteBatch, Texture2D texture, Vector2 position)
         {
@@ -19,7 +21,7 @@ namespace SkiingMinigameBL.Extensions
 
         public static void DrawStringInTopLeft(this SpriteBatch spriteBatch, GraphicsDeviceManager graphics, SpriteFont spriteFont, string text)
         {
-            DrawStringInTopLeft(spriteBatch, graphics, spriteFont, text, Color.Black);
+            spriteBatch.DrawStringInTopLeft(graphics, spriteFont, text, Color.Black);
         }
 
         public static void DrawStringInTopLeft(this SpriteBatch spriteBatch, GraphicsDeviceManager graphics, SpriteFont spriteFont, string text, Color textColor)
@@ -29,7 +31,7 @@ namespace SkiingMinigameBL.Extensions
 
         public static void DrawStringInCenter(this SpriteBatch spriteBatch, GraphicsDeviceManager graphics, SpriteFont spriteFont, string text)
         {
-            DrawStringInCenter(spriteBatch, graphics, spriteFont, text, Color.Black);
+            spriteBatch.DrawStringInCenter(graphics, spriteFont, text, Color.Black);
         }
 
         public static void DrawStringInCenter(this SpriteBatch spriteBatch, GraphicsDeviceManager graphics, SpriteFont spriteFont, string text, Color textColor)

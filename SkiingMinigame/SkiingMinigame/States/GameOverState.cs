@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SkiingMinigame.Facades;
-using SkiingMinigameBL.Extensions;
+using SkiingMinigame.FakeBL.Extensions;
+using SkiingMinigame.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,15 @@ namespace SkiingMinigame.States
 
         public override void Draw(GameTime gameTime)
         {
-            Context._spriteBatch.DrawStringInCenter(
-                Context._graphics,
-                Context._font,
-                "Game Over. Press enter to go back to the startscreen.");
+            Context.Background1.Draw(Context._spriteBatch);
+            Context.Background2.Draw(Context._spriteBatch);
+            
+
+            Context._spriteBatch.DrawStringInCenter(Context._graphics, ContentService.Instance.GetSpriteFont(ContentService.GameFont), "Game Over.");
+
+            Context._spriteBatch.DrawString(ContentService.Instance.GetSpriteFont(ContentService.GameFont), "Press enter to go back to start.", new Vector2(30, 450), Color.Black);
         }
+
+
     }
 }

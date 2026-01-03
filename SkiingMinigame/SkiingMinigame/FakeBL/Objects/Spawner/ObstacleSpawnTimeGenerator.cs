@@ -1,11 +1,9 @@
-﻿using SkiingMinigameBL.Objects.Sprites;
-using System;
-using System.Collections.Generic;
+﻿using System;using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkiingMinigameBL.Objects.Spawner
+namespace SkiingMinigame.FakeBL.Objects.Spawner
 {
     public class ObstacleSpawnTimeGenerator
     {

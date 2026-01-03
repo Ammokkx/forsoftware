@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SkiingMinigameBL.Objects.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,15 +15,17 @@ namespace SkiingMinigame.FakeBL.Objects.Sprites
 
         }
 
+
+        //i know this isn't meant to be here okay but out of all the things to struggle the most on i didn't expect it to be making the background loop
         internal override void ChangeYPosition(float yChange)
         {
-            if (Position.Y > -1528) 
+            if (Position.Y > Game1.MagicNumberThatSomehowMakesTheBackgroundWorkProperlyNegative) 
             {
                 Position = Position with { Y = Position.Y + yChange };
             }
             else
             {
-                Position = Position with { Y = 1528 };
+                Position = Position with { Y = Game1.MagicNumberThatSomehowMakesTheBackgroundWorkProperlyPositive };
             }
         }
     }

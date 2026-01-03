@@ -1,11 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame_Pikachu.Services;
 using SkiingMinigame.Facades;
 using SkiingMinigame.FakeBL.Objects.Sprites;
+using SkiingMinigame.Services;
 using SkiingMinigame.States;
-using SkiingMinigameBL.Objects.Sprites;
 using System.Collections.Generic;
 
 namespace SkiingMinigame
@@ -15,14 +14,22 @@ namespace SkiingMinigame
         internal GraphicsDeviceManager _graphics;
         internal SpriteBatch _spriteBatch;
 
-        internal const int PLAYER_STEP = 8;
-        internal const int BACKGROUND_STEP = 8;
+        internal const int PLAYER_STEP = 5;
+        internal const int BACKGROUND_STEP = 4;
         internal const int OBSTACLE_STEP = 4;
 
-        internal SpriteFont _font;
+        internal const int PlayGroundBoundsLeft = 0;
+        internal const int PlayGroundBoundsRight = 585;
+        internal const int PlayGroundBoundsUp = 0;
+        internal const int PlayGroundBoundsDown = 785;
+        internal const int BoopRightOrDown = 5;
+        internal const int BoopLeftOrUp = -5;
 
-        internal int _numberOfRemainLives;
+        // can you guess why i called it this
+        internal const int MagicNumberThatSomehowMakesTheBackgroundWorkProperlyPositive = 1528;
+        internal const int MagicNumberThatSomehowMakesTheBackgroundWorkProperlyNegative = -1528;
 
+        // player 1 is a list because that makes it easier to track multiple objects, while player 2 is only ever 1 guy in the game so i just made it its own object. they're also separate objects because of the separate control schemes, easier to do this way as i hella did not know how to make p1 and p2 have different buttons within the same object
         internal List<Player1Sprite> Player;
         internal Player2Sprite Player2;
 
@@ -71,8 +78,7 @@ namespace SkiingMinigame
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
-            _font = Content.Load<SpriteFont>("game-font");
+           
         }
 
         protected override void Update(GameTime gameTime)

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame_Pikachu.Core;
+using SkiingMinigame.Facades;
 using System;
 using System.Collections.Generic;
 
-namespace MonoGame_Pikachu.Services
+namespace SkiingMinigame.Services
 {
     public class ContentService
     {
@@ -28,14 +28,15 @@ namespace MonoGame_Pikachu.Services
         public const string Rock = "rock";
         public const string Snowman = "snowman";
         public const string TreeBottom = "tree-bottom";
-        public const string SpriteFont = "game-font";
+        public const string GameFont = "game-font";
         public const string Background = "background";
 
-        // two dictionaries for textures and spritefone
+        // two dictionaries for textures and spritefont
         private readonly Dictionary<string, Texture2D> _textures;
         private readonly Dictionary<string, SpriteFont> _spriteFont;
 
         // loafing them all in
+        //that was meant to be loading, but coming back like a day later and seeing loafing instead is sending me into orbit
         private ContentService(Game game)
         {
             _textures = new Dictionary<string, Texture2D>();
@@ -47,7 +48,7 @@ namespace MonoGame_Pikachu.Services
             _textures.Add(Snowman, ContentFacade.LoadTexture2D(game, Snowman));
             _textures.Add(TreeBottom, ContentFacade.LoadTexture2D(game, TreeBottom));
             _textures.Add(Background, ContentFacade.LoadTexture2D(game, Background));
-            _spriteFont.Add(SpriteFont, ContentFacade.LoadSpriteFont(game, SpriteFont));
+            _spriteFont.Add(GameFont, ContentFacade.LoadSpriteFont(game, GameFont));
 
         }
 

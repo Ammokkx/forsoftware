@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using MonoGame_Pikachu.Services;
-using SkiingMinigameBL.Objects.Spawner;
-using SkiingMinigameBL.Objects.Sprites;
+using SkiingMinigame.FakeBL.Objects.Spawner;
+using SkiingMinigame.FakeBL.Objects.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace SkiingMinigame.Services.Spawners
 {
-    public class Spawner
+    public abstract class Spawner
     {
-
+        // originally i wanted one spawner for everything but then the snowman decided to be funny, so this is abstract now
         public ObstacleSpawnTimeGenerator obstacleSpawner;
         public double timeUntilSpawn;
-        private double elapsedTime;
+        internal double elapsedTime;
         protected Game1 Context;
         public Spawner(List<ObstacleSprite> obstacle, Game1 context, double minSpawnSpeed, double maxSpawnSpeed)
         {
@@ -29,18 +28,8 @@ namespace SkiingMinigame.Services.Spawners
         public List<ObstacleSprite> _obstacle;
 
 
-        public void Spawn(double gametime)
-        {
-            if (elapsedTime > timeUntilSpawn)
-            {
-                _obstacle.Add(new ObstacleSprite(ContentService.Instance.GetTexture(ContentService.Rock), new Vector2(Random.Shared.Next(Context._graphics.PreferredBackBufferWidth), Context._graphics.PreferredBackBufferHeight)));
-
-                timeUntilSpawn = obstacleSpawner.GenerateSpawnTime();
-                elapsedTime = 0;
-                return;
-            }
-
-            elapsedTime += gametime;
-        }
+        public abstract void Spawn(double gametime);
+        
+            
     }
 }

@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace SkiingMinigame.FakeBL.Objects.Sprites
 {
-    public class ObstacleSprite : Sprite
+    public class SnowManSprite : ObstacleSprite
     {
-        public ObstacleSprite(Texture2D texture, Vector2 position) : base(texture, position)
+        public SnowManSprite(Texture2D texture, Vector2 position) : base(texture, position)
         {
+            HitLeftSideOfScreen = false;
+            IsHit = false;
         }
+        public bool HitLeftSideOfScreen { get; set; }
     }
 }

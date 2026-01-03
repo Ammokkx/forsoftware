@@ -1,11 +1,11 @@
-﻿using SkiingMinigameBL.Objects.Sprites;
+﻿using SkiingMinigame.FakeBL.Objects.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SkiingMinigame.FakeBL.Objects
+namespace SkiingMinigame.FakeBL.Objects.Scrollers
 {
     public class ObstacleScroller
     {

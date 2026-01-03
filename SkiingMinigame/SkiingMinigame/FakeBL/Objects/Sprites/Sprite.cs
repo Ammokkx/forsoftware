@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SkiingMinigameBL.Extensions;
+using SkiingMinigame.FakeBL.Extensions;
 
-
-namespace SkiingMinigameBL.Objects.Sprites
+namespace SkiingMinigame.FakeBL.Objects.Sprites
 {
     public abstract class Sprite(Texture2D texture, Vector2 position)
     {
@@ -34,5 +33,8 @@ namespace SkiingMinigameBL.Objects.Sprites
         {
             Position = Position with { Y = Position.Y + yChange };
         }
+
+        // so many things needed this that i decided to just pull it up to the highest level
+        public bool IsHit {  get; set; }
     }
 }

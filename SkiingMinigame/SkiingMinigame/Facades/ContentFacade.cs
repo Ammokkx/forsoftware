@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MonoGame_Pikachu.Core
+namespace SkiingMinigame.Facades
 {
     // added being able to load sprite fonts because duh
     public static class ContentFacade
